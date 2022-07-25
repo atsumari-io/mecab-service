@@ -1,5 +1,5 @@
 {
-  "name": "webapp",
+  "name": "server",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -27,9 +27,6 @@
     "@types/react-dom": "18.0.5",
     "eslint": "8.18.0",
     "eslint-config-next": "12.2.3",
-    "typescript": "4.7.4",
-    "tailwindcss": "^3.1.6",
-    "postcss": "^8.4.14",
-    "autoprefixer": "^10.4.7"
+    "typescript": "4.7.4"
   }
 }
