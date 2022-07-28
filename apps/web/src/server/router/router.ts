@@ -22,7 +22,7 @@ const callMecabService = async (text: string) => {
   return json as { result: MeCabWordOutput[] };
 };
 
-export const router = createRouter().query("tokenize", {
+export const router = createRouter().mutation("tokenize", {
   input: z.object({
     text: z
       .string()
