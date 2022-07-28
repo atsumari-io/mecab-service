@@ -6,7 +6,8 @@ import { z } from "zod";
  * This way you can ensure the app isn't built with invalid env vars.
  */
 export const serverSchema = z.object({
-  INTERNAL_SECRET: z.string(),
+  // INTERNAL_SECRET: z.string(),
+  // PORT: z.string()
 });
 
 /**
