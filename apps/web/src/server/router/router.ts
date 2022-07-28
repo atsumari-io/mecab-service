@@ -6,7 +6,7 @@ import { MeCabWordOutput } from "@atsumari/mecabjs";
 const tokenizerApiRoute = env.SERVER_URL + "/api/tokenize";
 
 const mecabServiceResultSchema = z.object({
-  result: z.array(z.object({})),
+  result: z.array(z.object({}).nullable()),
 });
 
 const callMecabService = async (text: string) => {
