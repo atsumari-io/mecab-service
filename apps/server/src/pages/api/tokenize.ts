@@ -5,6 +5,11 @@ export default async function tokenize(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  if (req.headers.authorization !== process.env.INTERNAL_SECRET) {
+    res.status(401).end("Unauthorized");
+    return;
+  }
+
   if (req.method !== "GET") {
     return res.status(405).end("Method not allowed");
   }
