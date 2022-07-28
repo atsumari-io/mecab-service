@@ -10,7 +10,7 @@ export default async function tokenize(
     return;
   }
 
-  if (req.method !== "GET") {
+  if (req.method !== "POST") {
     return res.status(405).end("Method not allowed");
   }
 
@@ -24,6 +24,5 @@ export default async function tokenize(
   }
 
   const mecabResult = await new MeCab().parse(text);
-
   return res.status(200).json({ result: mecabResult });
 }
