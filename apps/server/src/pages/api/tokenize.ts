@@ -9,6 +9,10 @@ export default async function tokenize(
     return res.status(405).end("Method not allowed");
   }
 
+  if (req.headers["content-type"] !== "application/json") {
+    return res.status(415).end("Content-Type must be application/json");
+  }
+
   const { text } = req.body;
   if (!text) {
     res.status(400).json({ error: "text is required" });
