@@ -10,27 +10,31 @@
     "deploy": "git push origin"
   },
   "dependencies": {
+    "@atsumari/mecabjs": "0.1.0",
+    "@chakra-ui/react": "^2.2.4",
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@trpc/client": "^9.26.2",
+    "@trpc/next": "^9.26.2",
+    "@trpc/react": "^9.26.2",
+    "@trpc/server": "^9.26.2",
+    "framer-motion": "^6.5.1",
     "next": "12.2.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "zod": "^3.17.3",
-    "@atsumari/mecabjs": "0.1.0",
     "react-query": "^3.39.2",
     "superjson": "^1.9.1",
-    "@trpc/server": "^9.26.2",
-    "@trpc/client": "^9.26.2",
-    "@trpc/next": "^9.26.2",
-    "@trpc/react": "^9.26.2"
+    "zod": "^3.17.3"
   },
   "devDependencies": {
     "@types/node": "18.0.0",
     "@types/react": "18.0.14",
     "@types/react-dom": "18.0.5",
+    "autoprefixer": "^10.4.7",
     "eslint": "8.18.0",
     "eslint-config-next": "12.2.3",
-    "typescript": "4.7.4",
-    "tailwindcss": "^3.1.6",
     "postcss": "^8.4.14",
-    "autoprefixer": "^10.4.7"
+    "tailwindcss": "^3.1.6",
+    "typescript": "4.7.4"
   }
 }

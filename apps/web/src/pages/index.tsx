@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import React from "react";
-import { inferQueryOutput, trpc } from "../utils/trpc";
+import { trpc } from "../utils/trpc";
 
 const Home: NextPage = () => {
   const [text, setText] = React.useState<string>("");
@@ -49,8 +49,9 @@ const Home: NextPage = () => {
           />
           <button
             className=" anim-1 bg-emerald-600 rounded-md px-4 font-medium tracking-wide  \
-              hover:bg-emerald-800 ease-in-out duration-200"
-            onClick={() => onSubmit(text)}
+              hover:bg-emerald-800 ease-in-out duration-200 disabled:cursor-not-allowed"
+            onClick={async () => await onSubmit(text)}
+            disabled={isFetching}
           >
             Submit
           </button>

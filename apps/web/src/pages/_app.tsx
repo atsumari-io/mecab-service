@@ -4,11 +4,16 @@ import type { AppRouter } from "../server/router";
 import { loggerLink } from "@trpc/client/links/loggerLink";
 import { httpBatchLink } from "@trpc/client/links/httpBatchLink";
 import type { AppType } from "next/dist/shared/lib/utils";
+import { ChakraProvider } from "@chakra-ui/react";
 import superjson from "superjson";
 import "../styles/globals.css";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
-  return <Component {...pageProps} />;
+  return (
+    <ChakraProvider>
+      <Component {...pageProps} />
+    </ChakraProvider>
+  );
 };
 
 const getBaseUrl = () => {
