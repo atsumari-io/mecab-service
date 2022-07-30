@@ -25,6 +25,8 @@ export const Compounds: {
   接続助詞: "CONJUN_PARTICLE",
   一般: "GENERAL",
   形容動詞語幹: "NA_ADJ",
+  終助詞: "END_PARTICLE",
+  句点: "FULL_STOP",
 };
 
 export const Inflections: {
@@ -40,8 +42,11 @@ export const Inflections: {
 };
 
 export const translateMecabWordOutput = (
-  word: MeCabWordOutput
-): MeCabWordOutput => {
+  word: MeCabWordOutput | null
+): MeCabWordOutput | null => {
+  if (!word) {
+    return null;
+  }
   const { lexical, compound1, compound2, compound3, inflection } = word;
 
   return {

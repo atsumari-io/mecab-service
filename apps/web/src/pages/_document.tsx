@@ -8,7 +8,6 @@ export default function Document() {
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
           rel="stylesheet"
         />
-        <title>Japanese Text Segmenter</title>
       </Head>
       <body className="text-gray-100 bg-zinc-900">
         <Main />
