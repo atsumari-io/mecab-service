@@ -23,7 +23,8 @@ const callMecabService = async (text: string) => {
   return json as { result: MeCabWordOutput[] };
 };
 
-export const router = createRouter().query("tokenize", {
+// api needs to be a mutation to be able to send payload in body
+export const router = createRouter().mutation("tokenize", {
   input: z.object({
     text: z
       .string()

@@ -10,12 +10,10 @@ const Home: NextPage = () => {
 
   const [text, setText] = React.useState<string>("");
 
-  const { refetch, isFetching, data } = trpc.useQuery([".tokenize", { text }], {
-    enabled: false, // disable automatic queries
-  });
+  const { mutate, data, isLoading } = trpc.useMutation(".tokenize");
 
-  const onSubmit = async () => {
-    await refetch();
+  const onSubmit = async (text: string) => {
+    await mutate({ text });
     onOpen();
   };
 
@@ -31,13 +29,25 @@ const Home: NextPage = () => {
         <div className="pt-2 md:pt-2" />
         <h2 className="text-xl font-normal text-center anim-1">
           Powered by{" "}
-          <span className="text-emerald-400 hover:cursor-pointer font-bold">
+          <span className="text-rose-400 hover:cursor-pointer font-bold">
             <a
               href="https://taku910.github.io/mecab/"
               rel="noreferrer"
               target="_blank"
             >
               MeCab
+            </a>
+          </span>
+          {" + "}
+          <span className="text-violet-300 hover:cursor-pointer font-bold">
+            <a href="https://create.t3.gg/" rel="noreferrer" target="_blank">
+              T3
+            </a>
+          </span>
+          {" + "}
+          <span className="text-[#853bce] hover:cursor-pointer font-bold">
+            <a href="https://railway.app/" rel="noreferrer" target="_blank">
+              Railway
             </a>
           </span>
         </h2>
@@ -58,10 +68,10 @@ const Home: NextPage = () => {
               required
             />
             <button
-              className=" anim-1 bg-emerald-600 rounded-md px-4 font-medium tracking-wide  \
-              hover:bg-emerald-800 ease-in-out duration-200 disabled:cursor-not-allowed"
-              onClick={async () => await onSubmit()}
-              disabled={isFetching}
+              className=" anim-1 bg-rose-600 rounded-md px-4 font-medium tracking-wide  \
+              hover:bg-rose-800 ease-in-out duration-200 disabled:cursor-not-allowed"
+              onClick={async () => await onSubmit(text)}
+              disabled={isLoading}
             >
               Submit
             </button>
@@ -73,17 +83,17 @@ const Home: NextPage = () => {
             href="https://github.com/atsumari-io/mecab-service"
             rel="noreferrer"
             target="_blank"
-            className="px-3 py-1 transition-all duration-200 rounded-md hover:bg-emerald-800"
+            className="px-3 py-1 transition-all duration-200 rounded-md hover:bg-zinc-800"
           >
             GitHub
           </a>
           <a
-            href="https://taku910.github.io/mecab/"
+            href="https://twitter.com/nickramki"
             rel="noreferrer"
             target="_blank"
-            className="px-3 py-1 transition-all duration-200 rounded-md hover:bg-emerald-800"
+            className="px-3 py-1 transition-all duration-200 rounded-md hover:bg-zinc-800"
           >
-            MeCab
+            Twitter
           </a>
         </div>
       </div>

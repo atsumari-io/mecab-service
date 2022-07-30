@@ -7,24 +7,24 @@ export const Lexicals: {
   動詞: "VERB",
   記号: "PUNCTUATION",
   助詞: "PARTICLE",
-  形容詞: "I_ADJ",
-  助動詞: "AUX_VERB",
+  形容詞: "I_ADJECTIVE",
+  助動詞: "AUXILLARY_VERB",
   副詞: "ADVERB",
   接続詞: "CONJUNCTION",
-  連体詞: "PRE_NOUN_ADJ",
+  連体詞: "PRE_NOUN_ADJECTIVE",
 };
 
 export const Compounds: {
   [key: string]: string;
 } = {
-  自立: "INDEP",
-  非自立: "NOT_INDEP",
+  自立: "INDEPENDENT",
+  非自立: "NOT_INDEPENDENT",
   格助詞: "CASE_MARK_PARTICLE",
   係助詞: "CONNECTING_PARTICLE",
   代名詞: "PRONOUN",
-  接続助詞: "CONJUN_PARTICLE",
+  接続助詞: "CONJUNCTION_PARTICLE",
   一般: "GENERAL",
-  形容動詞語幹: "NA_ADJ",
+  形容動詞語幹: "NA_ADJECTIVE",
   終助詞: "END_PARTICLE",
   句点: "FULL_STOP",
 };
@@ -33,12 +33,12 @@ export const Inflections: {
   [key: string]: string;
 } = {
   連用形: "STEM",
-  基本形: "DICT",
-  未然形: "NAI_STEM_V",
+  基本形: "DICTIONARY",
+  未然形: "NAI_STEM_VERB",
   連用テ接続: "TE_STEM",
   連用タ接続: "TA_STEM",
-  仮定形: "HYPO_FORM",
-  未然ウ接続: "VOL_STEM",
+  仮定形: "HYPOTHETICAL_FORM",
+  未然ウ接続: "VOLITIONAL_STEM",
 };
 
 export const translateMecabWordOutput = (
