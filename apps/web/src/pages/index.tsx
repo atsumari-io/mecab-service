@@ -3,6 +3,7 @@ import React from "react";
 import { trpc } from "../utils/trpc";
 import { useDisclosure, Button } from "@chakra-ui/react";
 import { OutputDrawer } from "../components/Drawer";
+import { usePlausible } from "next-plausible";
 import Head from "next/head";
 
 const Home: NextPage = () => {
@@ -12,7 +13,10 @@ const Home: NextPage = () => {
 
   const { mutate, data, isLoading } = trpc.useMutation(".tokenize");
 
+  const plausible = usePlausible();
+
   const onSubmit = async (text: string) => {
+    plausible("SubmitButtonPressed");
     await mutate({ text });
     onOpen();
   };

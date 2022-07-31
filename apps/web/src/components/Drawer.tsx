@@ -8,6 +8,7 @@ import {
   DrawerCloseButton,
   Box,
 } from "@chakra-ui/react";
+import { usePlausible } from "next-plausible";
 import {
   createContext,
   Dispatch,
@@ -39,13 +40,21 @@ const Word: React.FC<{
   id: string;
 }> = ({ text, mecabData, id }) => {
   const { setWord, word } = useContext(SelectedWordContext);
+  const plausible = usePlausible();
   return (
     <div
       className={`hover:bg-rose-600 cursor-pointer
       inline-block text-2xl ease-in-out duration-200 rounded-md p-[1px] mb-1 mr-[1px] ${
         word?.id === id ? "bg-rose-600" : ""
       }`}
-      onClick={() => setWord({ text, mecabData, id })}
+      onClick={() => {
+        setWord({ text, mecabData, id });
+        plausible("WordPressed", {
+          props: {
+            word: text,
+          },
+        });
+      }}
     >
       <span>{text}</span>
     </div>
