@@ -1,3 +1,4 @@
-# Create T3 App
+# MeCab Server
 
-This is an app bootstrapped according to the [init.tips](https://init.tips) stack, also known as the T3-Stack.
+This a simple Next.js server that exposes a single API endpoint that processes text using MeCab.
+This server is deployed on Railway.
