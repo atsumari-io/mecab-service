@@ -12,6 +12,7 @@ export const Lexicals: {
   副詞: "ADVERB",
   接続詞: "CONJUNCTION",
   連体詞: "PRE_NOUN_ADJECTIVE",
+  副詞可能: "ADVERB_POSSIBLE",
 };
 
 export const Compounds: {
@@ -27,6 +28,11 @@ export const Compounds: {
   形容動詞語幹: "NA_ADJECTIVE",
   終助詞: "END_PARTICLE",
   句点: "FULL_STOP",
+  読点: "COMMA",
+  接尾: "SUFFIX",
+  固有名詞: "PROPER_NOUN",
+  組織: "ORGANIZATION",
+  サ変接続: "SURU_VERB",
 };
 
 export const Inflections: {

@@ -3,14 +3,24 @@ import { withTRPC } from "@trpc/next";
 import type { AppRouter } from "../server/router";
 import type { AppType } from "next/dist/shared/lib/utils";
 import { ChakraProvider } from "@chakra-ui/react";
+import { DefaultSeo } from "next-seo";
+import PlausibleProvider from "next-plausible";
 import superjson from "superjson";
 import "../styles/globals.css";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
-    <ChakraProvider>
-      <Component {...pageProps} />
-    </ChakraProvider>
+    <>
+      <DefaultSeo
+        title="Japanese Text Segmenter"
+        description="Online Japanese morphological analyzer powered by MeCab."
+      />
+      <PlausibleProvider domain="jts.atsumari.io">
+        <ChakraProvider>
+          <Component {...pageProps} />
+        </ChakraProvider>
+      </PlausibleProvider>
+    </>
   );
 };
 

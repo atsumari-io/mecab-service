@@ -41,8 +41,8 @@ const Word: React.FC<{
   const { setWord, word } = useContext(SelectedWordContext);
   return (
     <div
-      className={`hover:bg-rose-600 cursor-default  
-      inline-block text-3xl ease-in-out duration-200 rounded-md p-1 mb-1 mr-[2px] ${
+      className={`hover:bg-rose-600 cursor-pointer
+      inline-block text-2xl ease-in-out duration-200 rounded-md p-[1px] mb-1 mr-[1px] ${
         word?.id === id ? "bg-rose-600" : ""
       }`}
       onClick={() => setWord({ text, mecabData, id })}
@@ -54,22 +54,55 @@ const Word: React.FC<{
 
 const SelectedWordDataContainer: React.FC<{}> = () => {
   const { word } = useContext(SelectedWordContext);
+  let compound = "";
+  if (word?.mecabData) {
+    compound += (word.mecabData.compound1 ?? "") + " ";
+    compound += (word.mecabData.compound2 ?? "") + " ";
+    compound += (word.mecabData.compound3 ?? "") + " ";
+  }
   return (
     <div>
       {word === null && (
-        <div className="text-2xl">
-          Select a text segment from above to view information about it...
-        </div>
+        <div className="text-2xl">Select a text segment from above.</div>
       )}
       {word !== null && word.mecabData === null && (
         <div className="text-2xl">
-          No applicable information for this segment...
+          No applicable information for this segment.
         </div>
       )}
       {word !== null && word.mecabData !== null && (
-        <div className="text-2xl">
-          <div>Selected Word: {word.mecabData.original}</div>
-        </div>
+        <table className="text-xl w-full border-separate border-spacing-3 table-fixed">
+          <tbody>
+            <tr>
+              <td className="text-xl">Selected Word</td>
+              <td>{word.mecabData.original}</td>
+            </tr>
+            <tr>
+              <td className="text-xl">Pronunciation</td>
+              <td>{word.mecabData.pronunciation ?? "N/A"}</td>
+            </tr>
+            <tr>
+              <td className="text-xl">Reading</td>
+              <td>{word.mecabData.reading ?? "N/A"}</td>
+            </tr>
+            <tr>
+              <td className="text-xl">Lexical</td>
+              <td>{word.mecabData.lexical ?? "N/A"}</td>
+            </tr>
+            <tr>
+              <td className="text-xl">Compound</td>
+              <td>{compound}</td>
+            </tr>
+            <tr>
+              <td className="text-xl">Conjugation</td>
+              <td>{word.mecabData.conjugation ?? "N/A"}</td>
+            </tr>
+            <tr>
+              <td className="text-xl">Inflection</td>
+              <td>{word.mecabData.inflection ?? "N/A"}</td>
+            </tr>
+          </tbody>
+        </table>
       )}
     </div>
   );
@@ -122,20 +155,19 @@ export const OutputDrawer = (
   const { mecabData, text } = props;
   const mappings = matchTextPartToMecabData(text, mecabData);
   return (
-    <Drawer {...props} placement="left" size={"xl"}>
+    <Drawer {...props} placement="left" size={"lg"}>
       <DrawerOverlay />
       <DrawerContent
         className=" bg-zinc-900 text-gray-100"
         bg={"bg-zinc-900"}
         textColor={"text-gray-100"}
-        p={0}
       >
-        <DrawerBody px={0} py={16}>
+        <DrawerBody px={0} pt={16} pb={0}>
           <DrawerCloseButton />
           <div className="flex flex-col justify-between h-full">
             <SelectedWordContext.Provider value={value}>
               <Box
-                className="px-10 min-h-[600px] max-h-[800px] overflow-y-auto"
+                className="mx-5 px-8 py-6 rounded-lg min-h-[200px] max-h-[800px] overflow-y-auto bg-black shadow-inner"
                 css={{
                   "&::-webkit-scrollbar": {
                     width: "10px",
@@ -147,7 +179,6 @@ export const OutputDrawer = (
                   },
                   "&::-webkit-scrollbar-thumb": {
                     background: "#27272a",
-                    borderRadius: "10px",
                   },
                 }}
               >
@@ -160,8 +191,7 @@ export const OutputDrawer = (
                   />
                 ))}
               </Box>
-              <div className="px-10 h-8 my-4 text-lg bg-zinc-800"></div>
-              <div className="px-10 flex-grow text-lg">
+              <div className="px-10 py-10 flex-grow text-lg shadow-inner bg-zinc-900">
                 <SelectedWordDataContainer />
               </div>
             </SelectedWordContext.Provider>

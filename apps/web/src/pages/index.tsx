@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import React from "react";
 import { trpc } from "../utils/trpc";
-import { useDisclosure } from "@chakra-ui/react";
+import { useDisclosure, Button } from "@chakra-ui/react";
 import { OutputDrawer } from "../components/Drawer";
 import Head from "next/head";
 
@@ -67,14 +67,17 @@ const Home: NextPage = () => {
               onChange={(e) => setText(e.target.value)}
               required
             />
-            <button
-              className=" anim-1 bg-rose-600 rounded-md px-4 font-medium tracking-wide  \
-              hover:bg-rose-800 ease-in-out duration-200 disabled:cursor-not-allowed"
+            <Button
+              className="anim-1 bg-rose-600 rounded-md px-4 font-medium tracking-wide  \
+              hover:bg-rose-800 ease-in-out duration-200"
               onClick={async () => await onSubmit(text)}
-              disabled={isLoading}
+              isLoading={isLoading}
+              bg="bg-rose-600"
+              _hover={{ bg: "bg-rose-800" }}
+              size="lg"
             >
               Submit
-            </button>
+            </Button>
           </div>
         </div>
         <div className="mt-4" />
